@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Application</title>
+	</head>
+	<body>
+		<script type="text/javascript" src="src/monitor.js"></script>
+		
+		<script type="text/javascript">
+			var o = {};
+			//var o = [];
+
+			function handler (ch, records) {
+				console.log(ch);
+			}
+			
+			Object.monitor(o, handler);
+
+			o.push({age: 26}, {name: 'nelis'});
+			console.log('--check ',o.push({
+				age: 38, 
+				city: 'Accra',
+				name:'Nelis Blanco'
+			}));
+			console.log('--deleted ',o.pop('city'));
+			o.push({
+				country: 'Ghana'
+			});
+
+			// o.push(26, 'nelis');
+			// o.push(38, 'Accra', 'Nelis Blanco');
+			// o.pop();
+
+			//	Stop monitoring
+			Object.unmonitor(o, function() {
+				console.log(this);
+			});
+
+		</script>
+
+	</body>
+</html>
